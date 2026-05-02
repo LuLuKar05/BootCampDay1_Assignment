@@ -4,8 +4,8 @@ import { DataSource } from "typeorm";
 export const AppDataSource = new DataSource({
   type: "better-sqlite3",
   database: "database.sqlite",
-  synchronize: true,
+  synchronize: false,
   logging: true,
-  entities: [],
-  migrations: [],
+  entities: [__dirname + "/../entities/*.{ts,js}"],
+  migrations: [__dirname + "/migrations/*.{ts,js}"],
 });

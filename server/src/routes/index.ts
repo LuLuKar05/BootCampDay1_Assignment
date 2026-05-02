@@ -1,14 +1,14 @@
 import { Router, Request, Response } from "express";
+import concertRoutes from "./concert.routes";
+import reservationRoutes from "./reservation.routes";
 
 const router = Router();
 
-router.get("/", (_req: Request, res: Response) => {
-  res.json({ message: "Hello world!" });
+router.get("/health", (_req: Request, res: Response) => {
+    res.json({ status: "ok" });
 });
 
-router.get("/:slug", (req: Request, res: Response) => {
-  const { slug } = req.params;
-  res.json({ message: `Hello ${slug}!` });
-});
+router.use("/concerts", concertRoutes);
+router.use("/reservations", reservationRoutes);
 
 export default router;
